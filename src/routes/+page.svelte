@@ -37,7 +37,7 @@
 				bind:value={newTodoText}
 				onkeydown={handleKeydown}
 				placeholder="What's on your mind?"
-				class="w-full bg-canvas-parchment border-none rounded-pill px-5 py-4 text-body focus:ring-2 focus:ring-primary outline-none transition-all placeholder:text-ink-muted-48 shadow-inner"
+				class="w-full bg-canvas-parchment border-none rounded-pill px-5 py-4 text-body focus:ring-2 focus:ring-primary outline-none transition-all placeholder:text-ink-muted-48"
 			/>
 			<button
 				onclick={() => { todoState.add(newTodoText); newTodoText = ''; }}
@@ -57,7 +57,7 @@
 		{:else}
 			<div class="max-w-[500px] mx-auto space-y-sm">
 				{#each todoState.todos as todo (todo.id)}
-					<div class="group flex items-center justify-between p-md bg-canvas rounded-lg border border-hairline transition-all hover:shadow-sm">
+					<div class="group flex items-center justify-between p-md bg-canvas rounded-lg border border-hairline transition-all">
 						<div class="flex items-center gap-md flex-1">
 							<button
 								onclick={() => todoState.toggle(todo.id)}
