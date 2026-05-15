@@ -29,6 +29,7 @@ BACKEND
 KONEKSI ANTARA FRONTEND DAN BACKEND
 
 - Gunakan MessagePack
+- Untuk docs MessagePack, cek di knowledge/messagepack/
 - Lewati pemeriksaan CORS. Buat supaya jangan sampai ada error CORS
 
 BUILD
