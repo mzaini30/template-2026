@@ -17,3 +17,19 @@ BACKEND
 KONEKSI ANTARA FRONTEND DAN BACKEND
 
 - Gunakan MessagePack
+
+AI
+
+- Untuk AI, gunakan OpenRouter
+- Untuk docs penggunaannya, cek knowledge/openrouter.txt
+- Model yang digunakan adalah openrouter/free
+- API keynya adalah sk-or-v1-1d2503cacedcf511b61a6b3a8526250fb2b005f8760bfdc39c5abe6d0c5cd8ef000
+
+PEMBAYARAN
+
+- Untuk pembayaran, gunakan Pakasir
+- Docsnya ada di knowledge/pakasir.txt
+- Slug Pakasir yang digunakan adalah bayar
+DATABASE
+
+- Database yang digunakan adalah SQLite
