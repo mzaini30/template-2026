@@ -29,6 +29,8 @@ BACKEND
 KONEKSI ANTARA FRONTEND DAN BACKEND
 
 - Gunakan MessagePack
+- Install MessagePack di backend: composer require rybakit/msgpack
+- Install MessagePack di frontend: pnpm i @ygoe/msgpack
 - Untuk docs MessagePack, cek di knowledge/messagepack/
 - Lewati pemeriksaan CORS. Buat supaya jangan sampai ada error CORS
 
@@ -50,7 +52,7 @@ PEMBAYARAN
 - Untuk pembayaran, gunakan Pakasir
 - Docsnya ada di knowledge/pakasir.txt
 - Slug Pakasir yang digunakan adalah bayar
-- 
+
 DATABASE
 
 - Database yang digunakan adalah SQLite
