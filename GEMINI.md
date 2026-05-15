@@ -1,22 +1,39 @@
 SKILLS
 
 - Selalu gunakan skill caveman
+- Selalu cek skill apa yang cocok dan otomatis install dengan: skills add [nama skillnya] -y
+
+TIMEZONE
+
+- Asia/Makassar (UTC + 8)
+
+CHUNKING
+
+- Baik di frontend maupun backend, pecah-pecah filenya supaya reusable dan mudah diolah AI
 
 FRONTEND
 
 - Menggunakan SvelteKit. Pakai Tailwind. Build dengan adapter static
 - Tampilan hanya mobile. Ketika dibuka di desktop, max width 600px
 - Untuk install dependencies, jangan gunakan npm. Hanya gunakan pnpm
+- Setiap alert, ganti dengan toast
+- Setiap interaksi, kasih bunyi beep yang cocok, supaya rame aja
 - Untuk tampilan, gunakan file DESIGN.md
 
 BACKEND
 
 - Lokasi di folder static. Native PHP aja. Jangan main route pakai route.php. Jadi, betul-betul akses ke direct filenya
 - Ketika mode dev, akses dengan http://localhost:8080. Ketika mode production, akses dengan /. Jadi, atur di Node environment
+- Tidak boleh membuat file index.php
 
 KONEKSI ANTARA FRONTEND DAN BACKEND
 
 - Gunakan MessagePack
+
+BUILD
+
+- Setiap halaman, kasih title dan meta social media
+- Setelah build, salin build/index.html ke build/index.php dan di situ atur conditioning title dan meta social media (termasuk meta gambar) baik di routing statis maulun dinamis
 
 AI
 
@@ -33,3 +50,15 @@ PEMBAYARAN
 DATABASE
 
 - Database yang digunakan adalah SQLite
+- Library yang digunakan untuk mengolahnya adalah RedBeanPHP yang berada di static/library/rb-sqlite.php
+- Docsnya berada di knowledge/redbeanphp/
+- Jangan gunakan freeze supaya bisa fleksibel
+- Untuk setiap insert data, gunakan Indempotency key
+- Lokasi database di static/database.db
+- Kecualikan file database dari akses langsung melalui browser menggunakan aturan di static/.htaccess
+
+WHATSAPP
+
+- Untuk komunikasi dengan WhatsApp menggunakan Sidobe yang docsnya berada di knowledge/sidobe.txt
+- API keynya adalah VcJqLUgSbgLBKvafcqWEErqRxhRjFEYiryEpHfhlrQZKQuOTSr000
+- Untuk nomor WhatsApp berformat 081234567890 akan secara otomatis diubah menjadi format +6281545143654
