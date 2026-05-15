@@ -29,6 +29,7 @@ BACKEND
 KONEKSI ANTARA FRONTEND DAN BACKEND
 
 - Gunakan MessagePack
+- Lewati pemeriksaan CORS. Buat supaya jangan sampai ada error CORS
 
 BUILD
 
@@ -48,6 +49,7 @@ PEMBAYARAN
 - Untuk pembayaran, gunakan Pakasir
 - Docsnya ada di knowledge/pakasir.txt
 - Slug Pakasir yang digunakan adalah bayar
+- 
 DATABASE
 
 - Database yang digunakan adalah SQLite
