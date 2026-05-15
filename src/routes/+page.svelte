@@ -90,46 +90,44 @@
 </svelte:head>
 
 <div class="flex flex-col min-h-screen">
-	<!-- Header -->
-	<header class="pt-20 pb-10 px-lg text-center">
+	<!-- Section 1: White Canvas (Hero & Input) -->
+	<section class="bg-canvas pt-20 pb-xl px-lg text-center border-b border-divider-soft">
 		<h1 class="font-hero mb-xs">
 			Todo
 		</h1>
-		<p class="text-tagline text-ink-muted-48">
+		<p class="text-tagline text-ink-muted-48 mb-xl">
 			Stay organized. Stay productive.
 		</p>
-	</header>
 
-	<!-- Input Area -->
-	<div class="px-lg mb-xl">
-		<div class="relative flex items-center">
+		<!-- Input Area -->
+		<div class="relative flex items-center max-w-[400px] mx-auto">
 			<input
 				type="text"
 				bind:value={newTodoText}
 				onkeydown={handleKeydown}
 				placeholder="What's on your mind?"
-				class="w-full bg-canvas-parchment border-none rounded-lg px-5 py-4 text-body focus:ring-2 focus:ring-primary outline-none transition-all placeholder:text-ink-muted-48"
+				class="w-full bg-canvas-parchment border-none rounded-pill px-5 py-4 text-body focus:ring-2 focus:ring-primary outline-none transition-all placeholder:text-ink-muted-48 shadow-inner"
 			/>
 			<button
 				onclick={addTodo}
-				class="absolute right-xs px-4 py-2 bg-primary text-on-primary rounded-pill text-button-utility font-normal hover:bg-primary-focus transition-all active:scale-95"
+				class="absolute right-xs px-5 py-2 bg-primary text-on-primary rounded-pill text-button-utility font-normal hover:bg-primary-focus transition-all active:scale-95"
 			>
 				Add
 			</button>
 		</div>
-	</div>
+	</section>
 
-	<!-- List -->
-	<div class="flex-1 px-lg pb-xxl">
+	<!-- Section 2: Parchment Canvas (The List) -->
+	<section class="flex-1 bg-canvas-parchment px-lg py-xl">
 		{#if loading}
 			<div class="flex justify-center py-section">
 				<div class="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
 			</div>
 		{:else}
-			<ul class="space-y-sm">
+			<div class="max-w-[500px] mx-auto space-y-sm">
 				{#each todos as todo (todo.id)}
-					<li class="group flex items-center justify-between p-sm bg-canvas-parchment rounded-lg transition-all border border-transparent hover:border-hairline">
-						<div class="flex items-center gap-sm flex-1">
+					<div class="group flex items-center justify-between p-md bg-canvas rounded-lg border border-hairline transition-all hover:shadow-sm">
+						<div class="flex items-center gap-md flex-1">
 							<button
 								onclick={() => toggleTodo(todo.id)}
 								class="w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all {todo.done ? 'bg-primary border-primary' : 'border-surface-chip-translucent bg-canvas'}"
@@ -153,18 +151,38 @@
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
 							</svg>
 						</button>
-					</li>
+					</div>
 				{:else}
 					<div class="text-center py-section">
 						<p class="text-body text-ink-muted-48">All caught up.</p>
 					</div>
 				{/each}
-			</ul>
+			</div>
 		{/if}
-	</div>
+	</section>
+
+	<!-- Section 3: Dark Tile (Stats/Footer Info) -->
+	<section class="bg-surface-tile-1 text-on-dark px-lg py-xl text-center">
+		<div class="max-w-[400px] mx-auto">
+			<h2 class="text-tagline mb-sm">Your Daily Progress</h2>
+			<div class="flex justify-center gap-xl mb-lg">
+				<div>
+					<div class="text-[34px] font-semibold">{todos.length}</div>
+					<div class="text-caption text-body-muted">Tasks</div>
+				</div>
+				<div>
+					<div class="text-[34px] font-semibold">{todos.filter(t => t.done).length}</div>
+					<div class="text-caption text-body-muted">Done</div>
+				</div>
+			</div>
+			<p class="text-caption text-body-muted italic px-xl">
+				"Simple things should be simple, complex things should be possible."
+			</p>
+		</div>
+	</section>
 
 	<!-- Footer -->
-	<footer class="p-lg text-center border-t border-canvas-parchment">
+	<footer class="bg-canvas-parchment p-lg text-center border-t border-divider-soft">
 		<p class="text-fine-print text-ink-muted-48">Designed for your focus.</p>
 	</footer>
 </div>
