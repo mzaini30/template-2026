@@ -34,6 +34,7 @@ BUILD
 
 - Setiap halaman, kasih title dan meta social media
 - Setelah build, salin build/index.html ke build/index.php dan di situ atur conditioning title dan meta social media (termasuk meta gambar) baik di routing statis maulun dinamis
+- Di .htaccess disetting supaya semua link itu mengarah ke index.php
 
 AI
 
