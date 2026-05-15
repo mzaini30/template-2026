@@ -1,86 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { encode, decode } from '@msgpack/msgpack';
+	import { todoState } from '$lib/todo.svelte';
 
-	import { dev } from '$app/environment';
-
-	interface Todo {
-		id: number;
-		text: string;
-		done: boolean;
-	}
-
-	let todos = $state<Todo[]>([]);
 	let newTodoText = $state('');
-	let loading = $state(true);
-
-	const API_URL = dev ? 'http://localhost:8080/api/todos.php' : '/api/todos.php';
-
-	async function fetchTodos() {
-		try {
-			const res = await fetch(API_URL);
-			if (res.ok) {
-				const buffer = await res.arrayBuffer();
-				// Fallback to JSON if not msgpack (for now)
-				try {
-					todos = decode(new Uint8Array(buffer)) as Todo[];
-				} catch (e) {
-					const text = new TextDecoder().decode(buffer);
-					todos = JSON.parse(text);
-				}
-			}
-		} catch (e) {
-			console.error('Failed to fetch', e);
-		} finally {
-			loading = false;
-		}
-	}
-
-	async function saveTodos() {
-		try {
-			const packed = encode(todos);
-			await fetch(API_URL, {
-				method: 'POST',
-				body: packed,
-				headers: { 'Content-Type': 'application/x-msgpack' }
-			});
-		} catch (e) {
-			console.error('Failed to save', e);
-		}
-	}
 
 	onMount(() => {
-		fetchTodos();
+		todoState.fetch();
 	});
-
-	async function addTodo() {
-		if (newTodoText.trim()) {
-			todos.push({
-				id: Date.now(),
-				text: newTodoText.trim(),
-				done: false
-			});
-			newTodoText = '';
-			await saveTodos();
-		}
-	}
-
-	async function deleteTodo(id: number) {
-		todos = todos.filter((t) => t.id !== id);
-		await saveTodos();
-	}
-
-	async function toggleTodo(id: number) {
-		const todo = todos.find((t) => t.id === id);
-		if (todo) {
-			todo.done = !todo.done;
-			await saveTodos();
-		}
-	}
 
 	function handleKeydown(e: KeyboardEvent) {
 		if (e.key === 'Enter') {
-			addTodo();
+			todoState.add(newTodoText);
+			newTodoText = '';
 		}
 	}
 </script>
@@ -109,7 +40,7 @@
 				class="w-full bg-canvas-parchment border-none rounded-pill px-5 py-4 text-body focus:ring-2 focus:ring-primary outline-none transition-all placeholder:text-ink-muted-48 shadow-inner"
 			/>
 			<button
-				onclick={addTodo}
+				onclick={() => { todoState.add(newTodoText); newTodoText = ''; }}
 				class="absolute right-xs px-5 py-2 bg-primary text-on-primary rounded-pill text-button-utility font-normal hover:bg-primary-focus transition-all active:scale-95"
 			>
 				Add
@@ -119,17 +50,17 @@
 
 	<!-- Section 2: Parchment Canvas (The List) -->
 	<section class="flex-1 bg-canvas-parchment px-lg py-xl">
-		{#if loading}
+		{#if todoState.loading && todoState.todos.length === 0}
 			<div class="flex justify-center py-section">
 				<div class="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
 			</div>
 		{:else}
 			<div class="max-w-[500px] mx-auto space-y-sm">
-				{#each todos as todo (todo.id)}
+				{#each todoState.todos as todo (todo.id)}
 					<div class="group flex items-center justify-between p-md bg-canvas rounded-lg border border-hairline transition-all hover:shadow-sm">
 						<div class="flex items-center gap-md flex-1">
 							<button
-								onclick={() => toggleTodo(todo.id)}
+								onclick={() => todoState.toggle(todo.id)}
 								class="w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all {todo.done ? 'bg-primary border-primary' : 'border-surface-chip-translucent bg-canvas'}"
 							>
 								{#if todo.done}
@@ -143,7 +74,7 @@
 							</span>
 						</div>
 						<button
-							onclick={() => deleteTodo(todo.id)}
+							onclick={() => todoState.remove(todo.id)}
 							aria-label="Delete task"
 							class="opacity-0 group-hover:opacity-100 p-2 text-[#ff3b30] hover:bg-red-50 rounded-full transition-all active:scale-90"
 						>
@@ -167,17 +98,22 @@
 			<h2 class="text-tagline mb-sm">Your Daily Progress</h2>
 			<div class="flex justify-center gap-xl mb-lg">
 				<div>
-					<div class="text-[34px] font-semibold">{todos.length}</div>
+					<div class="text-[34px] font-semibold">{todoState.todos.length}</div>
 					<div class="text-caption text-body-muted">Tasks</div>
 				</div>
 				<div>
-					<div class="text-[34px] font-semibold">{todos.filter(t => t.done).length}</div>
+					<div class="text-[34px] font-semibold">{todoState.todos.filter(t => t.done).length}</div>
 					<div class="text-caption text-body-muted">Done</div>
 				</div>
 			</div>
 			<p class="text-caption text-body-muted italic px-xl">
 				"Simple things should be simple, complex things should be possible."
 			</p>
+			{#if todoState.lastSynced}
+				<p class="text-[10px] text-body-muted mt-lg opacity-40">
+					Last synced: {todoState.lastSynced.toLocaleTimeString()}
+				</p>
+			{/if}
 		</div>
 	</section>
 

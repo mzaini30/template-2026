@@ -3,6 +3,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { todoState } from '$lib/todo.svelte';
 
 	let { children } = $props();
 
@@ -16,7 +17,7 @@
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
-<div class="w-full max-w-[600px] min-h-screen bg-canvas shadow-sm flex flex-col">
+<div class="w-full max-w-[600px] min-h-screen bg-canvas shadow-sm flex flex-col mx-auto">
 	<!-- Global Nav -->
 	<nav class="h-[44px] bg-surface-black text-on-dark px-lg flex items-center justify-between z-50">
 		<div class="flex items-center gap-lg">
@@ -41,9 +42,12 @@
 		<span class="text-tagline font-semibold">Todo</span>
 		<div class="flex items-center gap-sm">
 			<span class="text-button-utility cursor-default hover:text-primary transition-colors">Overview</span>
-			<span class="text-button-utility cursor-default hover:text-primary transition-colors">History</span>
-			<button class="bg-primary text-on-primary rounded-pill px-3 py-1 text-[12px] font-medium hover:bg-primary-focus transition-all active:scale-95">
-				Sync
+			<button 
+				onclick={() => todoState.fetch()}
+				class="bg-primary text-on-primary rounded-pill px-3 py-1 text-[12px] font-medium hover:bg-primary-focus transition-all active:scale-95 disabled:opacity-50"
+				disabled={todoState.loading}
+			>
+				{todoState.loading ? 'Syncing...' : 'Sync'}
 			</button>
 		</div>
 	</nav>
