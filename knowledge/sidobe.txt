@@ -1,0 +1,252 @@
+RATE LIMIT
+
+Response body JSON if reach limit rate limitting:
+
+{
+    "message": "rate limit exceeded"
+}
+
+OTENTIKASI
+
+curl --location 'https://api.sidobe.com/wa/v1' \
+  --header 'X-Secret-Key: 1234567' \
+  --header 'Content-Type: application/json'  
+Make sure to replace 1234567 with your Secret key.
+
+MENGIRIM PESAN
+
+Example send message to personal number:
+
+curl --location 'https://api.sidobe.com/wa/v1/send-message' \
+  --header 'X-Secret-Key: 123123' \
+  --header 'Content-Type: application/json' \
+  --data '{
+      "phone": "+628123123123",
+      "message": "example message"
+  }'
+Example send message to group:
+
+curl --location 'https://api.sidobe.com/wa/v1/send-message' \
+  --header 'X-Secret-Key: 123123' \
+  --header 'Content-Type: application/json' \
+  --data '{
+      "group_id": "123123@g.us",
+      "message": "example message"
+  }'
+Example send message using specific sender number:
+
+curl --location 'https://api.sidobe.com/wa/v1/send-message' \
+  --header 'X-Secret-Key: 123123' \
+  --header 'Content-Type: application/json' \
+  --data '{
+      "phone": "+628123123123",
+      "message": "example message",
+      "sender_phone": "+6281111111111"
+  }'
+The above command returns JSON structured like this:
+
+{
+  "is_success": true,
+  "data": {
+      "id": "1",
+      "message_type": "TEXT",
+      "status": "SUCCESS",
+      "is_async": false,
+      "whatsapp_device": {
+          "id": "123",
+          "name": "Number CS1",
+          "phone": "6281111111111"
+      }
+  }
+}
+
+MENGIRIM PESAN GAMBAR
+
+curl --location 'https://api.sidobe.com/wa/v1/send-message-image' \
+  --header 'X-Secret-Key: 123123' \
+  --header 'Content-Type: application/json' \
+  --data '{
+      "phone": "+628123123123",
+      "message": "example message",
+      "image_url": "https://sidobe.com/wp-content/uploads/2023/09/logo-2.png"
+  }'
+The above command returns JSON structured like this:
+
+{
+  "is_success": true,
+  "data": {
+      "id": "1",
+      "message_type": "IMAGE",
+      "status": "SUCCESS",
+      "is_async": false,
+      "whatsapp_device": {
+          "id": "123",
+          "name": "Number CS1",
+          "phone": "6281111111111"
+      }
+  }
+}
+
+MENGIRIM PESAN DOKUMEN
+
+curl --location 'https://api.sidobe.com/wa/v1/send-message-doc' \
+  --header 'X-Secret-Key: 123123' \
+  --header 'Content-Type: application/json' \
+  --data '{
+      "phone": "+628123123123",
+      "message": "example message",
+      "document_url": "https://sidobe.com/example.pdf",
+      "document_name": "Document Name Example"
+  }'
+The above command returns JSON structured like this:
+
+{
+  "is_success": true,
+  "data": {
+      "id": "1",
+      "message_type": "DOCS",
+      "status": "SUCCESS",
+      "is_async": false,
+      "whatsapp_device": {
+          "id": "123",
+          "name": "Number CS1",
+          "phone": "6281111111111"
+      }
+  }
+}
+
+CEK STATUS 
+
+curl --location 'https://api.sidobe.com/wa/v1/whatsapp-messages/3c509654-1c28-4f27-81eb-0d129a5d6ecf' \
+  --header 'X-Secret-Key: 123123'
+The above command returns JSON structured like this:
+
+{
+    "is_success": true,
+    "data": {
+        "id": "3c509654-1c28-4f27-81eb-0d129a5d6ecf",
+        "whatsapp_device": {
+            "id": "cb8f65f7-6107-4fcb-a5e9-d9b2b87417a9",
+            "phone": "+6281123123123",
+            "name": "CS Number 1"
+        },
+        "message_type": "TEXT",
+        "status": "SUCCESS",
+        "is_async": false
+    }
+}
+
+MENDAPATKAN LIST GRUP WHATSAPP 
+
+curl --location 'https://api.sidobe.com/wa/v1/whatsapp-groups' \
+--header 'X-Secret-Key: 123123'
+The above command returns JSON structured like this:
+
+{
+  "is_success": true,
+  "data": [
+      {
+          "id": "123123@g.us",
+          "name": "Group Name Example",
+          "description": "Group description example",
+          "created_at": "2025-08-20T15:43:31+07:00",
+          "owner_jid": "123123@lid",
+          "owner_phone": "628512312321"
+      }
+  ]
+}
+
+CEK NOMOR WHATSAPP 
+
+curl --location 'https://api.sidobe.com/wa/v1/utilities/check-number' \
+  --header 'X-Secret-Key: 123123' \
+  --header 'Content-Type: application/json' \
+  --data '{
+      "phone": "+628123123123"
+  }'
+The above command returns JSON structured like this:
+
+{
+  "is_success": true,
+  "data": {
+      "is_registered": true
+  }
+}
+
+WEBHOOK 
+
+Example webhook request with signature header:
+
+POST /your-webhook-endpoint HTTP/1.1
+Host: your-domain.com
+Content-Type: application/json
+X-Webhook-Signature: 26b2...a94f
+
+{
+  "id": "816332ca-b91a-469d-b4f6-9a17f440c05e",
+  "event": "SEND_MESSAGE_STATUS",
+  "created_at": "2025-08-11T23:41:43.889693+07:00",
+  "data": {
+    "whatsapp_message_id": "4da0cb47-9059-4074-ae64-8a1c659693a0",
+    "status": "SUCCESS",
+    "send_at": "2025-08-11T23:41:43+07:00",
+    "message_type": "TEXT"
+  }
+}
+
+VERIFIKASI SIGNATURE 
+
+Example signature verification in Node.js
+
+const crypto = require('crypto');
+
+// Your secret key from the dashboard
+const secretKey = 'YOUR_SECRET_KEY'; 
+
+// Signature from request header
+const receivedSignature = request.headers['x-webhook-signature'];
+
+// Webhook ID from request body
+const webhookId = request.body.id;
+
+// Payload to be hashed
+const payload = `${secretKey}|${webhookId}`;
+
+const expectedSignature = crypto
+  .createHash('sha256')
+  .update(payload)
+  .digest('hex');
+
+if (crypto.timingSafeEqual(Buffer.from(receivedSignature), Buffer.from(expectedSignature))) {
+  // Signature is valid, process webhook
+  console.log('Signature is valid.');
+} else {
+  // Invalid signature, ignore request
+  console.error('Invalid signature.');
+}
+
+WEBHOOK EVENTS 
+
+Example SEND_MESSAGE_STATUS payload:
+
+{
+    "id": "816332ca-b91a-469d-b4f6-9a17f440c05e",
+    "event": "SEND_MESSAGE_STATUS",
+    "created_at": "2025-08-11T23:41:43.889693+07:00",
+    "data": {
+        "whatsapp_message_id": "4da0cb47-9059-4074-ae64-8a1c659693a0",
+        "status": "SUCCESS",
+        "send_at": "2025-08-11T23:41:43+07:00",
+        "message_type": "TEXT"
+    }
+}
+
+ERROR CODE 
+
+Example failed request with error code:
+
+{
+    "is_success": false,
+    "message": "The API key provided is invalid. Please make sure to use the secret/public API key that you can obtain from the Dashboard.",
+    "error_code": "INVALID_API_KEY"
+}

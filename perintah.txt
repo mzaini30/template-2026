@@ -1,3 +1,1 @@
-Simpan ke git
-Coba dong pasang VConsole. Aku mau lihat bagaimana hasil fetchnya
-simpan ke git. langsung push
+Simpan ke git. Langsung push
