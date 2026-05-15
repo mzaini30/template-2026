@@ -17,7 +17,7 @@
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
-<div class="w-full max-w-[600px] min-h-screen bg-canvas shadow-sm flex flex-col mx-auto">
+<div class="w-full max-w-[600px] min-h-screen bg-canvas flex flex-col mx-auto">
 	<!-- Global Nav -->
 	<nav class="h-[44px] bg-surface-black text-on-dark px-lg flex items-center justify-between z-50">
 		<div class="flex items-center gap-lg">

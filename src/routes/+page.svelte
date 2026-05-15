@@ -61,7 +61,7 @@
 						<div class="flex items-center gap-md flex-1">
 							<button
 								onclick={() => todoState.toggle(todo.id)}
-								class="w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all {todo.done ? 'bg-primary border-primary' : 'border-surface-chip-translucent bg-canvas'}"
+								class="w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all active:scale-95 {todo.done ? 'bg-primary border-primary' : 'border-surface-chip-translucent bg-canvas'}"
 							>
 								{#if todo.done}
 									<svg class="w-3.5 h-3.5 text-on-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
