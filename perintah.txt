@@ -1,2 +1,1 @@
-Simpan ke git. Langsung push
-Simpan aja ke git. Langsung push
+
