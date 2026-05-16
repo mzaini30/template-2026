@@ -27,14 +27,6 @@ BACKEND
 - Ketika mode dev, akses dengan http://localhost:8080. Ketika mode production, akses dengan /. Jadi, atur di Node environment
 - Tidak boleh membuat file index.php
 
-KONEKSI ANTARA FRONTEND DAN BACKEND
-
-- Gunakan MessagePack
-- Install MessagePack di backend: composer require rybakit/msgpack
-- Install MessagePack di frontend: pnpm i @ygoe/msgpack
-- Untuk docs MessagePack, cek di knowledge/messagepack/
-- Lewati pemeriksaan CORS. Buat supaya jangan sampai ada error CORS
-
 BUILD
 
 - Setiap halaman, kasih title dan meta social media
