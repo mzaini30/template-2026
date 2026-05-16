@@ -13,6 +13,7 @@ CHUNKING
 
 FRONTEND
 
+- Gunakan bahasa Indonesia
 - Menggunakan SvelteKit. Pakai Tailwind. Build dengan adapter static
 - Tampilan hanya mobile. Ketika dibuka di desktop, max width 600px
 - Untuk install dependencies, jangan gunakan npm. Hanya gunakan pnpm
