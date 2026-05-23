@@ -1,0 +1,6 @@
+i0.wp.com digunakan untuk kompresi gambar. Misalnya aja link gambar adalah https://gambar.com/folder/gambarnya.png
+Contoh, jika kita ingin ubah width menjadi 300px: https://i0.wp.com/gambar.com/folder/gambarnya.png?w=300
+Contoh, jika kita ingin ubah height menjadi 450px: https://i0.wp.com/gambar.com/folder/gambarnya.png?h=450
+Contoh, jika kita ingin ubah crop menjadi 300px: https://i0.wp.com/gambar.com/folder/gambarnya.png?w=300&h=300&crop=1
+
+Lalu, onerror, maka menggunakan link gambar asli, tidak menggunakan prefix i0.wp.com
