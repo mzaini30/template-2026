@@ -21,6 +21,7 @@ FRONTEND
 - Setiap interaksi, kasih bunyi beep yang cocok, supaya rame aja
 - Untuk tampilan, gunakan file DESIGN.md
 - Untuk kompresi gambar, menggunakan bantuan i0.wp.com. Untuk docsnya, bisa ditemukan di ./knowledge/i0.txt
+- Untuk upload gambar, hanya ke https://imgchest.com/upload. Jadi, hanya ditanya link gambarnya aja dan sertakan link upload gambar tersebut di sekitar input text link gambar (target \_blank)
 
 BACKEND
 
