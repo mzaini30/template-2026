@@ -20,6 +20,7 @@ FRONTEND
 - Setiap alert, ganti dengan toast
 - Setiap interaksi, kasih bunyi beep yang cocok, supaya rame aja
 - Untuk tampilan, gunakan file DESIGN.md
+- Untuk kompresi gambar, menggunakan bantuan i0.wp.com. Untuk docsnya, bisa ditemukan di ./knowledge/i0.txt
 
 BACKEND
 
