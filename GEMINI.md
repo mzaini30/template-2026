@@ -40,7 +40,7 @@ AI
 - Untuk AI, gunakan OpenRouter
 - Untuk docs penggunaannya, cek knowledge/openrouter.txt
 - Model yang digunakan adalah openrouter/free
-- API keynya adalah sk-or-v1-1d2503cacedcf511b61a6b3a8526250fb2b005f8760bfdc39c5abe6d0c5cd8ef000
+- API keynya adalah sk-or-v1-adcf6210e14b4f9adbf87f8a27e083992446288af4adf6749c44c66df34cbd97000
 
 PEMBAYARAN
 
