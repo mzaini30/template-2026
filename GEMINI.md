@@ -41,6 +41,7 @@ AI
 - Untuk docs penggunaannya, cek knowledge/openrouter.txt
 - Model yang digunakan adalah openrouter/free
 - API keynya adalah sk-or-v1-adcf6210e14b4f9adbf87f8a27e083992446288af4adf6749c44c66df34cbd97000
+- AI ini digunakan hanya jika aku memintanya. Kalau aku tidak memintanya, jangan pernah sama sekali pasang fitur AI ini
 
 PEMBAYARAN
 
@@ -64,3 +65,8 @@ WHATSAPP
 - API keynya adalah VcJqLUgSbgLBKvafcqWEErqRxhRjFEYiryEpHfhlrQZKQuOTSr000
 - Untuk nomor WhatsApp berformat 081234567890 akan secara otomatis diubah menjadi format +6281545143654
 - Jika membuat fitur login dengan WA, itu nanti akan dikirimkan OTP berupa 6 angka (input type tel). Satu akun bisa login multi perangkat. Tokennya nanti akan disimpan di localStorage. Jika nomor WA tidak ada di database, berarti register masuknya itu ya, dan jangan lupa catat waktu registernya
+
+GAMBAR
+
+- Untuk upload gambar, itu menggunakan ImageChest yang dokumentasinya berada di ./knowledge/imagechest/
+- Token API ImageChest milikku adalah : Reo00mku5sftOHJqbZ7L9KqbhFTdjNidvNsM67lw8da4482e000
