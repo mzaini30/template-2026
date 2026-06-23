@@ -59,6 +59,11 @@ DATABASE
 - Lokasi database di static/database.db
 - Kecualikan file database dari akses langsung melalui browser menggunakan aturan di static/.htaccess
 
+ULID
+
+- Untuk di table-table di dalam database, itu selalu ada kolom ulid. Contohnya aja kalau di suatu table perlu kolom nama, alamat, dan nomor_hp, maka isi table tersebut kolom-kolomnya adalah id, ulid, nama, alamat, nomor_hp
+- ulid di sini yang akan ditampilkan dalam endpoint API backend. Sehingga, user (browser) tidak mengetahui id sebenarnya dari suatu record karena yang ditampilkan hanya ulid-nya
+
 WHATSAPP
 
 - Untuk komunikasi dengan WhatsApp menggunakan Sidobe yang docsnya berada di knowledge/sidobe.txt
