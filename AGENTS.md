@@ -14,8 +14,7 @@ CHUNKING
 FRONTEND
 
 - Gunakan bahasa Indonesia
-- Menggunakan SvelteKit. Pakai Tailwind. Build dengan adapter static
-- Jalankan  sv create  tanpa add-ons. Run command. Supaya nggak nyangkut ketika diolah dengan AI agents (di sini aku menggunakan AntiGravity CLI)
+- Menggunakan SvelteKit
 - Tampilan hanya mobile. Ketika dibuka di desktop, max width 600px
 - Untuk install dependencies, jangan gunakan npm. Hanya gunakan pnpm
 - Setiap alert, ganti dengan toast
