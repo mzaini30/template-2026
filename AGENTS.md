@@ -1,3 +1,11 @@
+VARIABLE
+
+$ai = sk-or-v1-adcf6210e14b4f9adbf87f8a27e083992446288af4adf6749c44c66df34cbd97000
+$whatsapp = bZYMoXDsIyjUVgognpKrdYylgwKzAOCHgHFjbdLeOJwosdtjAv000
+$imagechest = Reo00mku5sftOHJqbZ7L9KqbhFTdjNidvNsM67lw8da4482e000
+$pakasir = bayar
+$gist = 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000
+
 SKILLS
 
 - Selalu gunakan skill caveman
@@ -10,6 +18,13 @@ TIMEZONE
 CHUNKING
 
 - Baik di frontend maupun backend, pecah-pecah filenya supaya reusable dan mudah diolah AI
+
+UPLOAD FILE
+
+- Untuk upload file, menggunakan Github Gist
+- Untuk dokumentasi menggunakan Github Gist bisa dilihat di ./knowledge/gist.txt
+- Untuk token Githubnya yaitu $gist
+- Setelah berhasil upload, simpan data link yang di files[nama filenya]raw_url di database
 
 FRONTEND
 
@@ -40,14 +55,14 @@ AI
 - Untuk AI, gunakan OpenRouter
 - Untuk docs penggunaannya, cek knowledge/openrouter.txt
 - Model yang digunakan adalah openrouter/free
-- API keynya adalah sk-or-v1-adcf6210e14b4f9adbf87f8a27e083992446288af4adf6749c44c66df34cbd97000
+- API keynya adalah $ai
 - AI ini digunakan hanya jika aku memintanya. Kalau aku tidak memintanya, jangan pernah sama sekali pasang fitur AI ini
 
 PEMBAYARAN
 
 - Untuk pembayaran, gunakan Pakasir
 - Docsnya ada di knowledge/pakasir.txt
-- Slug Pakasir yang digunakan adalah bayar
+- Slug Pakasir yang digunakan adalah $pakasir
 
 DATABASE
 
@@ -67,11 +82,11 @@ ULID
 WHATSAPP
 
 - Untuk komunikasi dengan WhatsApp menggunakan Sidobe yang docsnya berada di knowledge/sidobe.txt
-- API keynya adalah VcJqLUgSbgLBKvafcqWEErqRxhRjFEYiryEpHfhlrQZKQuOTSr000
+- API keynya adalah $whatsapp
 - Untuk nomor WhatsApp berformat 081234567890 akan secara otomatis diubah menjadi format +6281545143654
 - Jika membuat fitur login dengan WA, itu nanti akan dikirimkan OTP berupa 6 angka (input type tel). Satu akun bisa login multi perangkat. Tokennya nanti akan disimpan di localStorage. Jika nomor WA tidak ada di database, berarti register masuknya itu ya, dan jangan lupa catat waktu registernya
 
 GAMBAR
 
 - Untuk upload gambar, itu menggunakan ImageChest yang dokumentasinya berada di ./knowledge/imagechest/
-- Token API ImageChest milikku adalah : Reo00mku5sftOHJqbZ7L9KqbhFTdjNidvNsM67lw8da4482e000
+- Token API ImageChest milikku adalah : $imagechest
