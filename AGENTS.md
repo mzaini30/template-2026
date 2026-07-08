@@ -3,7 +3,7 @@ VARIABLE
 $ai = sk-or-v1-adcf6210e14b4f9adbf87f8a27e083992446288af4adf6749c44c66df34cbd97000
 $whatsapp = bZYMoXDsIyjUVgognpKrdYylgwKzAOCHgHFjbdLeOJwosdtjAv000
 $imagechest = Reo00mku5sftOHJqbZ7L9KqbhFTdjNidvNsM67lw8da4482e000
-$pakasir = bayar
+$pakasir = untuk-tes
 $gist = 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000
 
 SKILLS
