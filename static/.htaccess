@@ -1,0 +1,26 @@
+# Block access to database file
+<Files "database.sqlite">
+    Require all denied
+</Files>
+<Files "database.db">
+    Require all denied
+</Files>
+
+# Disable directory listing
+Options -Indexes
+
+# Require index.php or index.html for directory access
+DirectoryIndex index.php index.html
+
+# Rewrite all requests to index.php for SPA routing
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Don't rewrite for existing files
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Rewrite everything else to index.php
+    RewriteRule ^ index.php [L]
+</IfModule>
